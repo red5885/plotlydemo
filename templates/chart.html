@@ -1,0 +1,46 @@
+<head>
+    <script type="text/javascript" src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript">
+        function generatehardplot(){
+            TESTER = document.getElementById('tester');
+            data = [{
+                x: [1,2,3,4,5],
+                y: [1,2,4,8,16]
+            },
+            {
+                x: [1,2,3,4,5],
+                y: [16,8,4,2,1]
+            }];
+            format = {
+                margin: {t:0}
+            }
+            trace = data;
+            Plotly.plot(TESTER, trace, format);
+        }
+        function generateplot(data)
+        {
+            TESTER = document.getElementById('generate');
+            Plotly.plot(TESTER,data);
+        }
+    </script>
+    <style>
+        body {
+            background-color: lightblue;
+        }
+        div {
+            width: 1000px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div id="tester">
+        <input type="button" name="plot" value="Plot" onclick="generatehardplot();"/>
+    </div>
+    <form action="." method="post">
+        <div id="generate">
+            <input type="button" name="generate" value="generate" onclick="generateplot([{x: [1,2,3,4,5], y: [1,2,4,8,16]}]);"/>
+        </div>
+    </form>
+
+</body>
