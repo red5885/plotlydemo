@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Fetched data{% endblock %}
+<!--
+{% block head %}
+<script>
+    function generate(){
+        Plotly.d3.json("/chart/data", (err, raw) => {
+            data = [
+                {
+                    x: raw.x,
+                    y: raw.y1
+                },
+                {
+                    x: raw.x,
+                    y: raw.y2
+                }
+            ];
+            layout = {
+                margin: {t: 0}
+            };
+            Plotly.newPlot('chartarea', data, layout);
+    })}
+</script>
+{% endblock %}
+-->
+{% block content %}
+<div id = "chartarea"></div>
+<script>
+    Plotly.d3.json("/chart/data", (err, raw) => {
+        data = [
+            {
+                x: raw.x,
+                y: raw.y1
+            },
+            {
+                x: raw.x,
+                y: raw.y2
+            }
+        ];
+        layout = {
+            margin: {t: 0}
+        };
+        Plotly.newPlot('chartarea', data, layout);
+    })
+</script>
+<div>
+    <input type="button" value="plot" onclick="generate();"/>
+</div>
+{% endblock %}

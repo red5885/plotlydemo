@@ -15,12 +15,15 @@
                 margin: {t:0}
             }
             trace = data;
-            Plotly.plot(TESTER, trace, format);
+            Plotly.plot(TESTER, trace, format, {displayModeBar: false});
         }
         function generateplot(data)
         {
             TESTER = document.getElementById('generate');
-            Plotly.plot(TESTER,data);
+            format = {
+                margin: {t: 0}
+            }
+            Plotly.newPlot(TESTER, data, format, {displayModeBar: false});
         }
     </script>
     <style>
@@ -37,10 +40,9 @@
     <div id="tester">
         <input type="button" name="plot" value="Plot" onclick="generatehardplot();"/>
     </div>
-    <form action="." method="post">
+    <!--form action="." method="post"-->
         <div id="generate">
             <input type="button" name="generate" value="generate" onclick="generateplot([{x: [1,2,3,4,5], y: [1,2,4,8,16]}]);"/>
         </div>
-    </form>
-
+    <!--/form-->
 </body>
